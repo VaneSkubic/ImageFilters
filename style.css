@@ -1,0 +1,41 @@
+body {
+    background-image: linear-gradient(to right top, #87b6ff, #00d4ff, #00ecee, #63fbb4, #d5ff7a);
+    margin: 0;
+    font-family: "Montserrat";
+    letter-spacing: 2;
+}
+
+#image {
+    display: block;
+    margin: 80px auto;
+    border-radius: 10px;
+    box-shadow: 0px 10px 41px 6px rgba(0, 0, 0, 0.41);
+}
+
+.navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+    letter-spacing: 3;
+}
+
+.left {
+    padding: 100px;
+}
+
+.right {
+    padding: 50px;
+    margin-top: 50px;
+}
+
+.sidenav {
+    padding-top: 70px;
+    height: 100%;
+}
+
+.btn {
+    margin: 5px 0;
+}
+
+input {
+    margin: 10px 0;
+}

@@ -1,0 +1,67 @@
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+
+    <title>Image Processing</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+
+    <link rel="icon" type="image/png" href="Assets/favicon.png" />
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">RAO - Image Processing</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid text-center">
+        <div class="row content">
+            <div class="col-sm-3 sidenav left">
+                <button type="button" class="btn btn-danger btn-block" onclick="normal()">Normal</button>
+                <button type="button" class="btn btn-danger btn-block" onclick="toGrayScale()">Gray Scale</button>
+                <button type="button" class="btn btn-danger btn-block" onclick="negative()">Negative</button>
+                <button type="button" class="btn btn-danger btn-block" onclick="gammaCorrection()">Gamma Correction</button>
+                <button type="button" class="btn btn-danger btn-block" onclick="threshold()">Threshold</button>
+                <button type="button" class="btn btn-danger btn-block" onclick="boxBlur()">Box Blur</button>
+                <button type="button" class="btn btn-danger btn-block" onclick="gaussianBlur()">Gaussian Blur</button>
+                <button type="button" class="btn btn-danger btn-block" onclick="laplace()">Laplace</button>
+                <button type="button" class="btn btn-danger btn-block" onclick="sobel()">Sobel</button>
+                <button type="button" class="btn btn-danger btn-block" onclick="medianFilter()">Median Filter</button>
+                <button type="button" class="btn btn-danger btn-block" onclick="unsharpMasking()">Unsharp Mask</button>
+            </div>
+            <div class="col-sm-6 text-left">
+                <img id="image" src="Assets/pupper.jpg">
+            </div>
+            <div class="col-sm-3 sidenav right">
+                <div class="well">
+                    <label>Red</label>
+                    <input type="range" min="-255" max="255" value="0" id="slider_red" onchange="sliders()"><br/>
+                    <label>Green</label>
+                    <input type="range" min="-255" max="255" value="0" id="slider_green" onchange="sliders()"><br/>
+                    <label>Blue</label>
+                    <input type="range" min="-255" max="255" value="0" id="slider_blue" onchange="sliders()"><br/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="JS/script.js"></script>
+
+</body>
+
+</html>
