@@ -1,27 +1,101 @@
-var imageObject = document.getElementById("image");
-var ctx, canvas, imageObject, imagePixels, width, height, r, g, b, v, red, green, blue, redDiff, blueDiff, greenDiff;
+var pos,
+    ctx, canvas,
+    ctxOverlay, overlay,
+    imagePixels,
+    width, height,
+    r, g, b, v,
+    red, green, blue,
+    redDiff, blueDiff, greenDiff,
+    imageObject,
+    drag, rect,
+    x, y, w, h;
 
+init();
 prepare();
 prepareSliders();
 
-function prepare() {
+function init() {
 
-    imageObject.src = "Assets/pupper.jpg";
+    drag = false;
+    rect = {};
+    x = y = w = h = 0;
+
     imageObject = document.getElementById("image");
+    imageObject.src = "Assets/pupper.jpg";
+    pos = imageObject.getBoundingClientRect();
     canvas = document.createElement("canvas");
     ctx = canvas.getContext("2d");
+
+    overlay = document.getElementById("overlay");
+    ctxOverlay = overlay.getContext("2d");
+    overlay.addEventListener('mousedown', mouseDown, false);
+    overlay.addEventListener('mouseup', mouseUp, false);
+    overlay.addEventListener('mousemove', mouseMove, false);
+
     width = imageObject.width;
     height = imageObject.height;
     canvas.width = width;
     canvas.height = height;
+
+    overlay.width = width;
+    overlay.height = height;
+
+}
+
+function prepare() {
+
+    imageObject.src = "Assets/pupper.jpg";
     ctx.drawImage(imageObject, 0, 0);
     imagePixels = ctx.getImageData(0, 0, width, height);
+    pos = overlay.getBoundingClientRect();
 
+}
+
+function mouseDown(e) {
+    clear();
+    prepare();
+    rect.startX = x = e.pageX - pos.left;
+    rect.startY = y = e.pageY - pos.top;
+    drag = true;
+}
+
+function mouseUp() {
+    drag = false;
+}
+
+function mouseMove(e) {
+    if (drag) {
+        rect.w = w = (e.pageX - pos.left) - rect.startX;
+        rect.h = h = (e.pageY - pos.top) - rect.startY;
+        ctxOverlay.clearRect(0, 0, canvas.width, canvas.height);
+        draw();
+    }
+}
+
+function clear() {
+    rect.startX = rect.startX = rect.w = rect.h = x = y = w = h = 0;
+    ctxOverlay.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+function draw() {
+    ctxOverlay.lineWidth = "2";
+    ctxOverlay.strokeStyle = "grey";
+    ctxOverlay.beginPath();
+    ctxOverlay.rect(rect.startX, rect.startY, rect.w, rect.h);
+    ctxOverlay.fillStyle = "#78787873";
+    ctxOverlay.fill();
+    ctxOverlay.stroke();
+    ctxOverlay.closePath();
 }
 
 function updateImage() {
 
-    ctx.putImageData(imagePixels, 0, 0, 0, 0, imagePixels.width, imagePixels.height);
+    if (w != 0) {
+        ctx.putImageData(imagePixels, 0, 0, x, y, w, h);
+    } else {
+        ctx.putImageData(imagePixels, 0, 0, 0, 0, imagePixels.width, imagePixels.height);
+    }
+    ctxOverlay.clearRect(0, 0, canvas.width, canvas.height);
     imageObject.src = canvas.toDataURL();
 
 }
@@ -39,11 +113,11 @@ function toGrayScale() {
     prepare();
 
     for (var i = 0; i < imagePixels.data.length; i += 4) {
-        y = imagePixels.data[i] * 0.299 +
+        yvalue = imagePixels.data[i] * 0.299 +
             imagePixels.data[i + 1] * 0.587 +
             imagePixels.data[i + 2] * 0.114;
         for (var j = 0; j < 3; j++) {
-            imagePixels.data[i + j] = y;
+            imagePixels.data[i + j] = yvalue;
         }
     }
 

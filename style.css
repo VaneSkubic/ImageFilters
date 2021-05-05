@@ -1,15 +1,32 @@
 body {
-    background-image: linear-gradient(to right top, #87b6ff, #00d4ff, #00ecee, #63fbb4, #d5ff7a);
+    background: rgb(90, 90, 90);
     margin: 0;
     font-family: "Montserrat";
     letter-spacing: 2;
 }
 
 #image {
+    position: absolute;
+    top: inherit;
+    left: inherit;
+    z-index: 0;
     display: block;
     margin: 80px auto;
     border-radius: 10px;
     box-shadow: 0px 10px 41px 6px rgba(0, 0, 0, 0.41);
+}
+
+button {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#overlay {
+    z-index: 2;
+    position: absolute;
+    top: 80px;
+    left: inherit;
 }
 
 .navbar {
