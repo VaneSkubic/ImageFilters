@@ -34,8 +34,9 @@ function init() {
     overlay.addEventListener('mouseup', mouseUp, false);
     overlay.addEventListener('mousemove', mouseMove, false);
 
-    width = imageObject.width;
-    height = imageObject.height;
+    image.width == 0 ? width = 720 : width = image.width;
+    image.height == 0 ? height = 399 : height = image.height;
+
     canvas.width = width;
     canvas.height = height;
 
