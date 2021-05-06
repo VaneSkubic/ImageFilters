@@ -27,6 +27,8 @@ function init() {
     ctx = canvas.getContext("2d");
 
     overlay = document.getElementById("overlay");
+    overlay.style.left = imageObject.offsetLeft;
+    overlay.style.top = imageObject.offsetTop;
     ctxOverlay = overlay.getContext("2d");
     overlay.addEventListener('mousedown', mouseDown, false);
     overlay.addEventListener('mouseup', mouseUp, false);
@@ -97,13 +99,6 @@ function updateImage() {
     }
     ctxOverlay.clearRect(0, 0, canvas.width, canvas.height);
     imageObject.src = canvas.toDataURL();
-
-}
-
-function normal() {
-
-    prepare();
-    updateImage();
 
 }
 

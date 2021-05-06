@@ -6,9 +6,6 @@ body {
 }
 
 #image {
-    position: absolute;
-    top: inherit;
-    left: inherit;
     z-index: 0;
     display: block;
     margin: 80px auto;
@@ -20,37 +17,53 @@ button {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    letter-spacing: 2 !important;
+}
+
+button:hover {
+    color: white !important;
 }
 
 #overlay {
-    z-index: 2;
     position: absolute;
-    top: 80px;
-    left: inherit;
+    margin: 0 auto;
+    z-index: 2;
 }
 
 .navbar {
     margin-bottom: 0;
     border-radius: 0;
-    letter-spacing: 3;
+    letter-spacing: 2;
+    background-color: #343a40 !important;
 }
 
 .left {
-    padding: 100px;
+    padding: 5vw 0 5vw 5vw;
 }
 
 .right {
-    padding: 50px;
-    margin-top: 50px;
+    padding: 5vw 5vw 5vw 0;
+    margin: 5vh 0;
+}
+
+.well {
+    color: white;
+    border: none;
+    padding-top: 3.5vh;
+    background-color: #343a40;
 }
 
 .sidenav {
-    padding-top: 70px;
+    padding-top: 8.5vh;
     height: 100%;
 }
 
 .btn {
     margin: 5px 0;
+}
+
+label {
+    font-weight: 500;
 }
 
 input {
