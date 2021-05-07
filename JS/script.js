@@ -27,8 +27,6 @@ function init() {
     ctx = canvas.getContext("2d");
 
     overlay = document.getElementById("overlay");
-    overlay.style.left = imageObject.offsetLeft;
-    overlay.style.top = imageObject.offsetTop;
     ctxOverlay = overlay.getContext("2d");
     overlay.addEventListener('mousedown', mouseDown, false);
     overlay.addEventListener('mouseup', mouseUp, false);
@@ -42,6 +40,9 @@ function init() {
 
     overlay.width = width;
     overlay.height = height;
+
+    overlay.style.left = imageObject.offsetLeft;
+    overlay.style.top = imageObject.offsetTop;
 
 }
 
